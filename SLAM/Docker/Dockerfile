@@ -1,7 +1,7 @@
 FROM nvidia/cudagl:10.2-devel-ubuntu18.04
 
 ARG CUDA_COMPUTE="6.1"
-ARG PROCCESS_NUM="16"
+ARG PROCCESS_NUM="4"
 
 ARG LIB_PATH=/ThirdParty
 # OpenCV
@@ -121,14 +121,14 @@ RUN echo -e "Make / Build OPENCV\n\n" && \
     -D OPENCV_EXTRA_MODULES_PATH=${OPENCV_CONTRIB_PATH}/modules \
     -D OPENCV_PYTHON3_INSTALL_PATH=/usr/local/lib/python3.6/dist-packages \
     -D BUILD_EXAMPLES=OFF .. && \
-    make -j${PROCCESS_NUM} && make install
+    make -j ${PROCCESS_NUM} && make install
 
 #### Eigen
 RUN echo -e "Install Eigen \n\n" && \
-    wget http://bitbucket.org/eigen/eigen/get/3.3.3.tar.bz2 && \
-    bzip2 -d 3.3.3.tar.bz2 && \
-    tar -xvf 3.3.3.tar && \
-    rm 3.3.3.tar && \
+    wget https://gitlab.com/libeigen/eigen/-/archive/3.3.9/eigen-3.3.9.tar.bz2 && \
+    bzip2 -d eigen-3.3.9.tar.bz2 && \
+    tar -xvf eigen-3.3.9.tar && \
+    rm eigen-3.3.9.tar && \
     mv eigen-*/ eigen && \
     mv eigen $EIGEN_PATH && \
     mkdir -p $EIGEN_PATH/build && \
@@ -142,7 +142,7 @@ RUN echo -e "Install Pangolin \n\n" && \
     git clone https://github.com/stevenlovegrove/Pangolin $PANGOLIN_PATH && \
     mkdir -p $PANGOLIN_PATH/build && \
     cd $PANGOLIN_PATH/build && \
-    cmake .. && make -${PROCCESS_NUM} && make install
+    cmake .. && make -j ${PROCCESS_NUM} && make install
 
 
 #### ORBSLAM2
