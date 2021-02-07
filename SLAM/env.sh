@@ -14,19 +14,21 @@ if [ "$1" == "build" ]; then
 elif [ "$1" == "run" ]; then
   echo -e "################################################################################\n"
   echo -e "Building Docker Container $DEFAULT_NAME \n\n"
-  xhost +local:docker                            # Display
+  #xhost +local:docker                            # Display
   docker run -it \
-             --name=$DEFAULT_NAME \
-             --device=/dev/video0:/dev/video0:rw \
-			 --gpus device=all \
-             -e DISPLAY=$DISPLAY \
-             -v /tmp/.X11-unix:/tmp/.X11-unix \
-             -v /media/james/D1/D-SLAM/data/:/data \
-             -v $PROJECT_PATH:/vslam \
+             #--name=$DEFAULT_NAME \
+             #--device=/dev/video0:/dev/video0:rw \
+			 #--gpus device=all \
+             #-e DISPLAY=$DISPLAY \
+             #-v /tmp/.X11-unix:/tmp/.X11-unix \
+             #-v /media/james/D1/D-SLAM/data/:/data \
+             #-v $PROJECT_PATH:/vslam \
+             --runtime nvidia
+             -v /home/chellind/NVSLAM/D-SLAM:/vslam \
              $DEFAULT_NAME:latest \
              /bin/bash
 else
-  xhost +local:docker                            # Display
+  #xhost +local:docker                            # Display
   docker start $DEFAULT_NAME
   docker attach $DEFAULT_NAME
 fi
