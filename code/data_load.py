@@ -23,9 +23,10 @@ class Dataloader():
 
     def load_data(self, batch_size=16):
         path = glob('./dataset/*.png')
+        print(path)
         self.n_batches = int(len(path) / batch_size)
         while 1:
-            random.shuffle(path)
+            np.random.shuffle(path)
             for i in range(self.n_batches - 1):
                 batch_path = path[i * batch_size:(i + 1) * batch_size]
                 input_imgs = np.empty((batch_size, self.crop_shape[0], self.crop_shape[1], 6), dtype="float32")
@@ -34,10 +35,14 @@ class Dataloader():
                 number = 0
                 for img_B_path in batch_path:
                     img_B = self.imread_color(img_B_path)
+                    print("This is image B: \n")
+                    print(img_B)
                     path_mid = os.path.split(img_B_path)
                     path_A_1 = path_mid[0] + '_' + self.dataset_name
                     path_A = os.path.join(path_A_1, path_mid[1])
-                    img_A = self.imread_color(path_A)
+                    print("This is path A: \n")
+                    print(path_A)
+                    img_A = self.imread_color(path=path_A)
 
                     nw = random.randint(0, img_B.shape[0] - self.crop_shape[0])
                     nh = random.randint(0, img_B.shape[1] - self.crop_shape[1])
