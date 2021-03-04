@@ -1,5 +1,5 @@
 ## How to enhance low light images
-In order to enhance low light images changes may need to be made in the ***test.py***.<br>
+In order to enhance low light images changes may need to be made in ***test.py***.<br>
 The following steps need to be taken to ensure images are enhanced.
 
 1. Run the following command line: `python test.py -i <INPUT_FOLDER> -r <RESULTS_FOLDER> -m <MODEL_FILE>` <br>
