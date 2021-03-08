@@ -1,0 +1,13 @@
+services:
+  aortiz98:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8775:8775"
+    volumes:
+      - .:/workspace
+      - /EEC193/data/KITTI/kitti-rgb-odometry/sequences:/workspace/LLIED
+    init: true
+    stdin_open: true
+    tty: true

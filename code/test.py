@@ -43,9 +43,9 @@ for i in range(len(path)):
     img_A = utls.imread_color(img_A_path)
     img_A = img_A[np.newaxis, :]
 
-    starttime = time.clock()
+    starttime = time.perf_counter()
     out_pred = mbllen.predict(img_A)
-    endtime = time.clock()
+    endtime = time.perf_counter()
     print('The ' + str(i+1)+'th image\'s Time:' +str(endtime-starttime)+'s.')
     fake_B = out_pred[0, :, :, :3]
     fake_B_o = fake_B

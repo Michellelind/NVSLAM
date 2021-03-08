@@ -103,7 +103,7 @@ combined.compile(loss=my_loss,
                  metrics=[utls.bright_mae, utls.bright_mse, utls.bright_psnr, utls.bright_SSIM, utls.bright_AB],
                  optimizer=opt)
 
-plot_model(mbllen, to_file='./model.png', show_shapes=True)
+#plot_model(mbllen, to_file='./model.png', show_shapes=True)
 combined.summary()
 
 def scheduler(epoch):
