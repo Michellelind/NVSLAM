@@ -14,4 +14,4 @@ The following steps need to be taken to ensure images are enhanced.
     - <INPUT_FOLDER> needs to be an already existing folder containing your dataset.
     - <RESULTS_FOLDER> does not need to be an existing folder because the code will create if for you. An existing folder can still be used.
     - <MODEL_FILE>  create a 'models' folder that contains .h files.
-        - exlucde '.h' from the command line above
+        - exclude '.h' from the command line above
