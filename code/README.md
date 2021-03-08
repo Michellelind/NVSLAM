@@ -13,4 +13,5 @@ The following steps need to be taken to ensure images are enhanced.
 4. Run the following command line: `python test.py -i <INPUT_FOLDER> -r <RESULTS_FOLDER> -m <MODEL_FILE>` <br>
     - <INPUT_FOLDER> needs to be an already existing folder containing your dataset.
     - <RESULTS_FOLDER> does not need to be an existing folder because the code will create if for you. An existing folder can still be used.
-    - <MODEL_FILE>  must be a .h5 file.
+    - <MODEL_FILE>  create a 'models' file that contains .h files.
+        - exlucde '.h' from the command line
