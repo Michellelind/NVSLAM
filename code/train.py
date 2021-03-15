@@ -37,7 +37,8 @@ def my_loss(y_true, y_pred):
     gray_sort = tf.nn.top_k(-gray, 256 * 256)[0]
     yu = gray_sort[:, index]
     yu = tf.expand_dims(tf.expand_dims(yu, -1), -1)
-    mask = tf.to_float(gray1 <= yu)
+    #mask = tf.to_float(gray1 <= yu)
+    mask = tf.cast(gray1 <= yu, dtype=tf.float32)
     mask1 = tf.expand_dims(mask, -1)
     mask = tf.concat([mask1, mask1, mask1], -1)
 
@@ -126,7 +127,7 @@ class Show_History(keras.callbacks.Callback):
         mbllen.save_weights(modelname)
 
         # test val data
-        path = glob('./dataset/*.png')
+        path = glob('dataset/*.png')
         number = 0
         psnr_ave = 0
 
@@ -159,7 +160,7 @@ class Show_History(keras.callbacks.Callback):
             fake_B = fake_B[0, :, :, :]
             img_B = crop_img_B[0, :, :, :]
 
-            clean_psnr = psnr_cau(fake_B, img_B)
+            clean_psnr = utls.psnr_cau(fake_B, img_B)
             L_psnr = ("%.4f" % clean_psnr)
 
             number += 1
@@ -192,6 +193,11 @@ step_epoch = 200
 combined.fit(
         data_loader.load_data(batch_size),
         steps_per_epoch=step_epoch,
-        epochs=200,
+        epochs=1,
         callbacks=[tbCallBack, show_history, change_lr, nanstop, reducelearate])
+plt.plot(combined.history['loss'])
+plt.title('Loss Graph')
+plt.ylabel('Loss')
+plt.xlabel('Epoch')
+plt.show()
 print('Done!')

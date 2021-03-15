@@ -21,27 +21,24 @@ class Dataloader():
         img_rgb = cv.merge([b, g, r])
         cv.imwrite(path, img_rgb)
 
-    def load_data(self, batch_size=16):
-        path = glob('./dataset/*.png')
-        print(path)
+    def load_data(self, batch_size=8):
+        path = glob('dataset/*.png')
         self.n_batches = int(len(path) / batch_size)
         while 1:
             np.random.shuffle(path)
+            #print("While loop 1")
             for i in range(self.n_batches - 1):
+                #print("For loop 1")
                 batch_path = path[i * batch_size:(i + 1) * batch_size]
                 input_imgs = np.empty((batch_size, self.crop_shape[0], self.crop_shape[1], 6), dtype="float32")
                 gt = np.empty((batch_size, self.crop_shape[0], self.crop_shape[1], 3), dtype="float32")
-
                 number = 0
                 for img_B_path in batch_path:
+                    #print("For loop 2")
                     img_B = self.imread_color(img_B_path)
-                    print("This is image B: \n")
-                    print(img_B)
                     path_mid = os.path.split(img_B_path)
                     path_A_1 = path_mid[0] + '_' + self.dataset_name
                     path_A = os.path.join(path_A_1, path_mid[1])
-                    print("This is path A: \n")
-                    print(path_A)
                     img_A = self.imread_color(path=path_A)
 
                     nw = random.randint(0, img_B.shape[0] - self.crop_shape[0])

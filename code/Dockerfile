@@ -37,6 +37,14 @@ RUN conda install -y python=$PYTHON_VERSION numpy pandas ipython mkl mkl-include
     conda install -y pytorch torchvision cudatoolkit=10.2 -c pytorch && \
     conda install -y -c conda-forge matplotlib && \
     conda clean -ya
+RUN conda install pydot
+RUN conda install pydotplus
+RUN conda install -c conda-forge xorg-libxrender xorg-libxpm
+RUN pip install keras
+RUN pip install tensorflow
+RUN pip install opencv-python-headless
+RUN pip install git+https://www.github.com/keras-team/keras-contrib.git
+RUN pip install imageio
 
 WORKDIR $PROJECT_DIR
 RUN chmod -R a+w .
