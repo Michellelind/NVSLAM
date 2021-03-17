@@ -1,0 +1,17 @@
+services:
+    nvslam:
+        build:
+            context: .
+            dockerfile: Dockerfile
+            shm_size: '2gb'
+        shm_size: '2gb'
+        ports:
+            - "8097:8774"
+        volumes:
+            - .:/nvslam
+            - /EEC193/data/BDD/trainB:/nvslam/dataset/Dark_KITTI
+            - /EEC193/data/BDD/bdd100k:/nvslam/dataset/bdd
+            - /EEC193/data/KITTI:/nvslam/dataset/KITTI
+        init: true
+        stdin_open: true
+        tty: true
