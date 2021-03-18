@@ -2,7 +2,8 @@
 
 ## *Using one RGB camera to accurately detects object and produce mapping under low light condition*
 
-![MBLLEN and Monodepth before and after](https://https://github.com/Michellelind/NVSLAM/edit/main/img/MBLLEN_and_Monodepth.jpg)
+![Dark KITTI](https://github.com/Michellelind/NVSLAM/blob/main/img/Dark_KITTI.jpg)
+![MBLLEN and Monodepth before and after](https://github.com/Michellelind/NVSLAM/blob/main/img/MBLLEN_and_Monodepth.jpg)
 
 ### Introduction
 
@@ -37,7 +38,7 @@ Feed into CNN model
 > 
 > run **test.py**
 > 
-
+!
 Apply to D-SLAM
 
 ### Future Work
