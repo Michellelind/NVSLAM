@@ -2,6 +2,8 @@
 
 ## *Using one RGB camera to accurately detects object and produce mapping under low light condition*
 
+![MBLLEN and Monodepth before and after](https://https://github.com/Michellelind/NVSLAM/edit/main/img/MBLLEN_and_Monodepth.jpg)
+
 ### Introduction
 
 As the increasing demands of autonomous vehicle, the autopilot feature is extremely important for a safe drive. One of the challenge is the accuracy at night. It is important for autonomous systems to still be able to navigate in dark conditions. The current system is able to have good performance in a well-lit environment but does not perform well in  dark environments. This is mostly caused by the noise and lacks offeatures in  the dark  images received  by the  cameras. LiDARis one of the main solutions in a current industry, but it alsoraises the costs of the production. Therefore, our goal of this project is to improve night detection in current SLAM systems without introducing additional sensors.  Our approach is to implement algorithms that will improve input data from the camera before processing it through the SLAM algorithm. With this, we can increase the accuracy for  object detection and increase the reliability of autonomous vehicles under low lighting conditions.
